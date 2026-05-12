@@ -1,0 +1,21 @@
+{
+    "name": "WP Registry",
+    "slug": "wp-registry",
+    "version": "1.0.0",
+    "download_url": "https://github.com/WPRegistry/wp-registry/releases/latest/download/wp-registry.zip",
+    "requires": "5.6",
+    "tested": "6.9",
+    "requires_php": "7.2",
+    "author": "Austin Ginder",
+    "author_profile": "https://austinginder.com",
+    "donate_link": "",
+    "homepage": "https://wpregistry.io",
+    "last_updated": "2026-05-08",
+    "sections": {
+        "description": "Check your WordPress site against the WP Registry, a public database of hashed plugins, themes, and files. Hash-based vulnerability and malware detection — no data leaves your site."
+    },
+    "banners": {
+        "low": "",
+        "high": ""
+    }
+}
