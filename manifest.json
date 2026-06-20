@@ -1,7 +1,7 @@
 {
     "name": "WP Registry",
     "slug": "wp-registry",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "download_url": "https://github.com/WPRegistry/wp-registry/releases/latest/download/wp-registry.zip",
     "requires": "5.6",
     "tested": "6.9",
@@ -10,9 +10,10 @@
     "author_profile": "https://austinginder.com",
     "donate_link": "",
     "homepage": "https://wpregistry.io",
-    "last_updated": "2026-05-08",
+    "last_updated": "2026-06-20",
     "sections": {
-        "description": "Check your WordPress site against the WP Registry, a public database of hashed plugins, themes, and files. Hash-based vulnerability and malware detection — no data leaves your site."
+        "description": "Check your WordPress site against the WP Registry \u2014 a public database of hashed plugins, themes, and files. Hash-based vulnerability and malware detection, plus one-command submission of unaudited builds for review.",
+        "changelog": "<h4>1.1.0</h4><ul><li>New <code>wp registry upload</code> \u2014 upload unaudited, latest-version builds to the audit queue (whole site or a single <code>type/slug</code>).</li><li><code>check</code> now reports <code>update</code> (a newer version is available) and <code>in queue</code> (uploaded, awaiting audit).</li><li><code>check</code> looks up only your hashes via prefix-sharded, edge-cached lookups instead of downloading the full manifests \u2014 faster and always fresh.</li></ul><h4>1.0.0</h4><ul><li>Initial release: <code>check</code>, <code>show</code>, and <code>update</code>.</li></ul>"
     },
     "banners": {
         "low": "",
