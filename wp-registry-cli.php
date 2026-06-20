@@ -15,8 +15,8 @@
  * Author URI:        https://austinginder.com
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
- * Text Domain:       wp-registry
- * Update URI:        https://github.com/WPRegistry/wp-registry
+ * Text Domain:       wp-registry-cli
+ * Update URI:        https://github.com/WPRegistry/wp-registry-cli
  */
 
 if ( ! defined( 'WPINC' ) ) {

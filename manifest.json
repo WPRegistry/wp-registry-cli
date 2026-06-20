@@ -1,8 +1,8 @@
 {
     "name": "WP Registry",
-    "slug": "wp-registry",
+    "slug": "wp-registry-cli",
     "version": "1.1.0",
-    "download_url": "https://github.com/WPRegistry/wp-registry/releases/latest/download/wp-registry.zip",
+    "download_url": "https://github.com/WPRegistry/wp-registry-cli/releases/latest/download/wp-registry-cli.zip",
     "requires": "5.6",
     "tested": "6.9",
     "requires_php": "7.2",

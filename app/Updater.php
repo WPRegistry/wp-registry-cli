@@ -10,9 +10,9 @@ class Updater {
 	public $cache_key;
 
 	public function __construct( string $plugin_file = '' ) {
-		$file = $plugin_file !== '' ? $plugin_file : dirname( __DIR__ ) . '/wp-registry.php';
+		$file = $plugin_file !== '' ? $plugin_file : dirname( __DIR__ ) . '/wp-registry-cli.php';
 
-		// plugin_basename gives "wp-registry/wp-registry.php" regardless of how
+		// plugin_basename gives "wp-registry-cli/wp-registry-cli.php" regardless of how
 		// the folder or bootstrap is named — surviving any future renames.
 		$this->plugin_basename = plugin_basename( $file );
 		$this->plugin_slug     = dirname( $this->plugin_basename );
@@ -44,7 +44,7 @@ class Updater {
 		}
 
 		if ( false === $remote ) {
-			$manifest_url = 'https://raw.githubusercontent.com/WPRegistry/wp-registry/main/manifest.json';
+			$manifest_url = 'https://raw.githubusercontent.com/WPRegistry/wp-registry-cli/main/manifest.json';
 			$response     = wp_remote_get(
 				$manifest_url,
 				[ 'timeout' => 30, 'headers' => [ 'Accept' => 'application/json' ] ]
@@ -68,7 +68,7 @@ class Updater {
 				// WP_DEBUG is on so production sites with EOL'd repos stay quiet.
 				set_transient( $this->cache_key, 'failed', HOUR_IN_SECONDS );
 				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-					error_log( "[wp-registry] manifest fetch failed ({$fail_reason}) from {$manifest_url}" );
+					error_log( "[wp-registry-cli] manifest fetch failed ({$fail_reason}) from {$manifest_url}" );
 				}
 				return $local_manifest;
 			}

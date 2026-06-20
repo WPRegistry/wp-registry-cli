@@ -16,7 +16,7 @@ Only content hashes leave your site for a check — sent as short, shared prefix
 ## Install
 
 ```bash
-wp plugin install https://github.com/WPRegistry/wp-registry/releases/latest/download/wp-registry.zip --force --activate
+wp plugin install https://github.com/WPRegistry/wp-registry-cli/releases/latest/download/wp-registry-cli.zip --force --activate
 ```
 
 ## Usage
