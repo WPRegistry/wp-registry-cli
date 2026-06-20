@@ -645,9 +645,12 @@ class Command {
 
 	/**
 	 * Resolve one local component's display status from the batch lookup + local
-	 * update state. An audited verdict wins; otherwise "in queue" (this exact build
-	 * is awaiting audit) beats "update" (a newer version exists) beats a plain
-	 * uploadable "unaudited".
+	 * update state. An audited verdict wins; otherwise a registry "outdated" flag
+	 * (the queue system found a newer version exists) shows as "update" and
+	 * overrides the site's own update transient — the registry is the authority,
+	 * since WordPress's update data is exactly what's unreliable here. Failing that,
+	 * "in queue" (this exact build is awaiting audit) beats a locally-detected
+	 * "update" beats a plain uploadable "unaudited".
 	 */
 	private static function resolve_component( string $type, string $slug, string $hash, array $lookup, array $update_slugs ): array {
 		$entry = $lookup[ $hash ] ?? null;
@@ -663,7 +666,12 @@ class Command {
 			];
 		}
 
-		if ( $entry && ! empty( $entry['in_queue'] ) ) {
+		$key_issue = '';
+		if ( $entry && ! empty( $entry['outdated'] ) ) {
+			$status    = 'update';
+			$latest    = (string) ( $entry['latest_version'] ?? '' );
+			$key_issue = $latest !== '' ? "newer version available (latest {$latest})" : 'newer version available';
+		} elseif ( $entry && ! empty( $entry['in_queue'] ) ) {
 			$status = 'in queue';
 		} elseif ( isset( $update_slugs[ $slug ] ) ) {
 			$status = 'update';
@@ -677,7 +685,7 @@ class Command {
 			'hash'      => substr( $hash, 0, 12 ),
 			'status'    => $status,
 			'malware'   => false,
-			'key_issue' => '',
+			'key_issue' => $key_issue,
 		];
 	}
 
@@ -901,6 +909,16 @@ class Command {
 				if ( $entry && ! empty( $entry['audited'] ) ) {
 					$skipped['audited']++;
 					if ( $targeted ) { \WP_CLI::warning( "{$group['type']}/{$slug} is already audited — nothing to upload." ); }
+					continue;
+				}
+				if ( $entry && ! empty( $entry['outdated'] ) ) {
+					// The registry already knows a newer version exists — don't re-queue
+					// a stale build even if this site's update transient hasn't caught up.
+					$skipped['outdated']++;
+					if ( $targeted ) {
+						$latest = (string) ( $entry['latest_version'] ?? '' );
+						\WP_CLI::warning( "{$group['type']}/{$slug} is outdated" . ( $latest !== '' ? " (latest {$latest})" : '' ) . " — update it first, then upload the latest build." );
+					}
 					continue;
 				}
 				if ( $entry && ! empty( $entry['in_queue'] ) ) {

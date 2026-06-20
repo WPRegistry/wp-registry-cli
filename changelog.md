@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.2.0 — 2026-06-20
+
+### Changed
+
+- **`check`** now reports `update` for a build the WP Registry has flagged
+  **outdated** — a newer version exists — and this verdict overrides your site's
+  own update check, which is exactly the data that can be stale. So a build that
+  was uploaded for audit but is already superseded shows as `update` (update it)
+  instead of lingering as `in queue` or `unaudited`.
+- **`upload`** skips builds the registry already knows are outdated, so a stale
+  local update check can't re-queue a dead build.
+
 ## 1.1.0 — 2026-06-20
 
 ### Added

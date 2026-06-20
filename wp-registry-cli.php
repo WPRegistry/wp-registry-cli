@@ -8,7 +8,7 @@
  * Plugin Name:       WP Registry
  * Plugin URI:        https://wpregistry.io
  * Description:       Check your WordPress site against the WP Registry, a public database of hashed plugins, themes, and files. Hash-based vulnerability and malware detection.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            Austin Ginder
@@ -31,7 +31,7 @@ if ( defined( 'WPREGISTRY_VERSION' ) ) {
 	return;
 }
 
-define( 'WPREGISTRY_VERSION', '1.1.0' );
+define( 'WPREGISTRY_VERSION', '1.2.0' );
 define( 'WPREGISTRY_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once WPREGISTRY_DIR . 'vendor/autoload.php';

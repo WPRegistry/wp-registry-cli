@@ -1,7 +1,7 @@
 {
     "name": "WP Registry",
     "slug": "wp-registry-cli",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "download_url": "https://github.com/WPRegistry/wp-registry-cli/releases/latest/download/wp-registry-cli.zip",
     "requires": "5.6",
     "tested": "6.9",
@@ -13,7 +13,7 @@
     "last_updated": "2026-06-20",
     "sections": {
         "description": "Check your WordPress site against the WP Registry \u2014 a public database of hashed plugins, themes, and files. Hash-based vulnerability and malware detection, plus one-command submission of unaudited builds for review.",
-        "changelog": "<h4>1.1.0</h4><ul><li>New <code>wp registry upload</code> \u2014 upload unaudited, latest-version builds to the audit queue (whole site or a single <code>type/slug</code>).</li><li><code>check</code> now reports <code>update</code> (a newer version is available) and <code>in queue</code> (uploaded, awaiting audit).</li><li><code>check</code> looks up only your hashes via prefix-sharded, edge-cached lookups instead of downloading the full manifests \u2014 faster and always fresh.</li></ul><h4>1.0.0</h4><ul><li>Initial release: <code>check</code>, <code>show</code>, and <code>update</code>.</li></ul>"
+        "changelog": "<h4>1.2.0</h4><ul><li><code>check</code> now shows <code>update</code> for a build the registry has flagged outdated — a newer version exists — even when your site's own update check hasn't caught up. The registry is the authority.</li><li><code>upload</code> skips builds the registry already knows are outdated.</li></ul><h4>1.1.0</h4><ul><li>New <code>wp registry upload</code> \u2014 upload unaudited, latest-version builds to the audit queue (whole site or a single <code>type/slug</code>).</li><li><code>check</code> now reports <code>update</code> (a newer version is available) and <code>in queue</code> (uploaded, awaiting audit).</li><li><code>check</code> looks up only your hashes via prefix-sharded, edge-cached lookups instead of downloading the full manifests \u2014 faster and always fresh.</li></ul><h4>1.0.0</h4><ul><li>Initial release: <code>check</code>, <code>show</code>, and <code>update</code>.</li></ul>"
     },
     "banners": {
         "low": "",
